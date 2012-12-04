@@ -1,0 +1,9 @@
+{"geocode": [40.7143528, -74.0059731], "terms": "ora kardashian", "scores": []}
+{"geocode": [47.6062095, -122.3320708], "terms": "ora kardashian", "scores": ["-0.143066", "-0.146874", "-0.132552", "-0.255728", "0.157328", "-0.172729", "0.0", "0.0", "-0.281889", "-0.540355", "0.187399", "-0.0228841", "-0.234363", "-0.0253562", "-0.0259183", "0.182534", "-0.083671", "-0.0148734", "-0.325893"]}
+{"geocode": [37.7749295, -122.4194155], "terms": "ora kardashian", "scores": []}
+{"geocode": [30.267153, -97.7430608], "terms": "ora kardashian", "scores": []}
+{"geocode": [34.0522342, -118.2436849], "terms": "ora kardashian", "scores": []}
+{"geocode": [43.0730517, -89.4012302], "terms": "ora kardashian", "scores": []}
+{"geocode": [41.8781136, -87.6297982], "terms": "ora kardashian", "scores": []}
+{"geocode": [25.7889689, -80.2264393], "terms": "ora kardashian", "scores": []}
+{"geocode": [44.983334, -93.26667], "terms": "ora kardashian", "scores": []}

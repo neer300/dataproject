@@ -1,0 +1,10 @@
+{"geocode": [40.7143528, -74.0059731], "terms": "kardashian ora rita", "scores": []}
+{"geocode": [47.6062095, -122.3320708], "terms": "kardashian ora rita", "scores": [-0.2279265, -0.2273345, -0.20102750000000003, -0.3405885, 0.157328, -0.2591285, 0.0, -0.0848605, -0.281889, -0.540355, 0.178025, -0.0228841, -0.4720895, -0.1058167, -0.11077880000000001, 0.0976735, -0.083671, -0.0185917, -0.204356]}
+{"geocode": [37.7749295, -122.4194155], "terms": "kardashian ora rita", "scores": []}
+{"geocode": [30.267153, -97.7430608], "terms": "kardashian ora rita", "scores": []}
+{"geocode": [34.0522342, -118.2436849], "terms": "kardashian ora rita", "scores": []}
+{"geocode": [43.0730517, -89.4012302], "terms": "kardashian ora rita", "scores": []}
+{"geocode": [41.8781136, -87.6297982], "terms": "kardashian ora rita", "scores": []}
+{"geocode": [25.7889689, -80.2264393], "terms": "kardashian ora rita", "scores": []}
+{"geocode": [33.7489954, -84.3879824], "terms": "kardashian ora rita", "scores": []}
+{"geocode": [42.331427, -83.0457538], "terms": "kardashian ora rita", "scores": []}

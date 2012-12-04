@@ -1,0 +1,16 @@
+
+NY
+Seattle0.581405 0.581405 0.581405 0.581405 0.581405 0.581405 0.581405 0.581405 0.55614 0.581405 
+San Francisco
+Austin
+Los Angeles
+Dublin
+Leeds
+London-0.405596 -0.328361 -0.189837 -0.345118 0.0 -0.189837 -0.449468 0.074472 0.0896405 0.034435 
+Cairo
+Mumbai
+Delhi
+Johannesberg
+Melbourne
+Sydney
+Hong Kong

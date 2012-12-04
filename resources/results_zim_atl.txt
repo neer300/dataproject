@@ -1,0 +1,1 @@
+{"geocode": [33.7489954, -84.3879824], "terms": "George Zimmerman", "scores": []}
