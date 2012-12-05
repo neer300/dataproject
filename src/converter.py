@@ -13,10 +13,11 @@ keys=[]
 error=0
 currentKey=0
 
-MAXIMUM_REQUEST_TO_ALCHEMY_PER_FILE = 10 #75
+interesting_term = "kate" #'rob', 'gaza'
+MAXIMUM_REQUEST_TO_ALCHEMY_PER_FILE = 75 #75
 DATA_PATH = os.path.join(BASE_DIRECTORY, "data");
 API_KEY_PATH = os.path.join(BASE_DIRECTORY, "resources", "api_key.txt")
-CSV_FILE_PATH = os.path.join(BASE_DIRECTORY, "data", "sentiment.csv")
+CSV_FILE_PATH = os.path.join(BASE_DIRECTORY, "data", interesting_term + "_sentiment.csv")
 
 print API_KEY_PATH
 print DATA_PATH
@@ -24,6 +25,7 @@ print DATA_PATH
 
 def read_tweets(filename):
     filename = os.path.join(DATA_PATH, filename)
+    print
     print "=" * 80
     print filename
     print "-" * 80
@@ -32,10 +34,11 @@ def read_tweets(filename):
     count_negative = 0
     count_ignored = 0
     sum_of_all = 0
+    total_count = 0
     with open(filename, "r") as txt:
         place = txt.readline()
         term = txt.readline()
-        for i in range(1, MAXIMUM_REQUEST_TO_ALCHEMY_PER_FILE):
+        while(total_count < MAXIMUM_REQUEST_TO_ALCHEMY_PER_FILE):
             tweet = txt.readline().rstrip()
             score = get_sentiment_from_alchemy(tweet)
             if score is not None:
@@ -45,7 +48,8 @@ def read_tweets(filename):
                     count_negative += 1
                 else:
                     count_neutral += 1
-                csv_row = (i, place, score, term, tweet)
+                total_count += 1
+                csv_row = (total_count, place, score, term, tweet)
                 print csv_row
             else:
                 count_ignored += 1
@@ -88,13 +92,19 @@ def get_sentiment_from_alchemy(tweet):
         if(error>2):
             error=0
             currentKey+=1
+            currentKey %= len(keys)
             fp2=open("temp.txt",'w')
             fp2.write(keys[currentKey])
             fp2.close()
             alchemyObj.loadAPIKey("temp.txt");
         None
 
-    )
+    
+if __name__== '__main__':
+    print os.getcwd()
+
+    fp=open("./resources/api_keys.txt",'r')
+    keys=fp.readlines()
     fp2=open("temp.txt",'w')
     fp2.write(keys[currentKey])
     fp2.close()
@@ -105,5 +115,12 @@ def get_sentiment_from_alchemy(tweet):
         csvwriter = csv.writer(csvfile)
         tweets_files = os.listdir(DATA_PATH)
         for filename in tweets_files:
+            interesting_term = ''
+
             if re.search("tweets_.*\.txt", filename):
-                read_tweets(filename)  
+                if 'kate' in filename: 
+                    interesting_term = 'kate'
+                else:
+                    continue
+                print (interesting_term, filename)
+                read_tweets(filename)
