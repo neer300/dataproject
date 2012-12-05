@@ -1,0 +1,10 @@
+{"geocode": [40.7143528, -74.0059731], "terms": "higher tax rich", "scores": []}
+{"geocode": [47.6062095, -122.3320708], "terms": "higher tax rich", "scores": [0.155146, 0.206044, 0.0497866, 0.175496]}
+{"geocode": [37.7749295, -122.4194155], "terms": "higher tax rich", "scores": []}
+{"geocode": [30.267153, -97.7430608], "terms": "higher tax rich", "scores": []}
+{"geocode": [34.0522342, -118.2436849], "terms": "higher tax rich", "scores": []}
+{"geocode": [43.0730517, -89.4012302], "terms": "higher tax rich", "scores": []}
+{"geocode": [41.8781136, -87.6297982], "terms": "higher tax rich", "scores": []}
+{"geocode": [25.7889689, -80.2264393], "terms": "higher tax rich", "scores": []}
+{"geocode": [33.7489954, -84.3879824], "terms": "higher tax rich", "scores": []}
+{"geocode": [42.331427, -83.0457538], "terms": "higher tax rich", "scores": []}
