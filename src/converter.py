@@ -1,4 +1,4 @@
-from alchemy import AlchemyAPI
+import AlchemyAPI
 from pattern.web import Twitter, plaintext
 from xml.dom.minidom import parseString
 import csv
@@ -6,14 +6,14 @@ import os
 import re
 
 
-BASE_DIRECTORY = "./"
+BASE_DIRECTORY = "C:\\Users\\Tushar\\Documents\\GitHub\\dataproject\\"
 alchemyObj = AlchemyAPI.AlchemyAPI()
 # Load the API key from disk.
 keys=[]
 error=0
 currentKey=0
 
-interesting_term = "kate" #'rob', 'gaza'
+interesting_term = "gaza" #'rob', 'gaza'
 MAXIMUM_REQUEST_TO_ALCHEMY_PER_FILE = 75 #75
 DATA_PATH = os.path.join(BASE_DIRECTORY, "data");
 API_KEY_PATH = os.path.join(BASE_DIRECTORY, "resources", "api_key.txt")
@@ -38,21 +38,22 @@ def read_tweets(filename):
     with open(filename, "r") as txt:
         place = txt.readline()
         term = txt.readline()
-        while(total_count < MAXIMUM_REQUEST_TO_ALCHEMY_PER_FILE):
-            tweet = txt.readline().rstrip()
-            score = get_sentiment_from_alchemy(tweet)
-            if score is not None:
-                if score > 0:
-                    count_positive += 1
-                elif score < 0:
-                    count_negative += 1
+        for line in txt:
+            if(total_count < MAXIMUM_REQUEST_TO_ALCHEMY_PER_FILE):
+                tweet = line.rstrip()
+                score = get_sentiment_from_alchemy(tweet)
+                if score is not None:
+                    if score > 0:
+                        count_positive += 1
+                    elif score < 0:
+                        count_negative += 1
+                    else:
+                        count_neutral += 1
+                    total_count += 1
+                    csv_row = (total_count, place, score, term, tweet)
+                    print csv_row
                 else:
-                    count_neutral += 1
-                total_count += 1
-                csv_row = (total_count, place, score, term, tweet)
-                print csv_row
-            else:
-                count_ignored += 1
+                    count_ignored += 1
         
         sum_of_all = count_positive - count_negative
         sentiment_csv = (place, count_positive, count_negative, count_neutral, sum_of_all, term)
@@ -89,8 +90,10 @@ def get_sentiment_from_alchemy(tweet):
         global currentKey
         error+=1
         print "error"
-        if(error>2):
+        if(error>4):
             error=0
+            import time
+            time.sleep(1)
             currentKey+=1
             currentKey %= len(keys)
             fp2=open("temp.txt",'w')
@@ -102,8 +105,8 @@ def get_sentiment_from_alchemy(tweet):
     
 if __name__== '__main__':
     print os.getcwd()
-
-    fp=open("./resources/api_keys.txt",'r')
+    
+    fp=open("C:\\Users\\Tushar\\Documents\\GitHub\\dataproject\\resources\\api_keys.txt",'r')
     keys=fp.readlines()
     fp2=open("temp.txt",'w')
     fp2.write(keys[currentKey])
@@ -115,11 +118,9 @@ if __name__== '__main__':
         csvwriter = csv.writer(csvfile)
         tweets_files = os.listdir(DATA_PATH)
         for filename in tweets_files:
-            interesting_term = ''
-
             if re.search("tweets_.*\.txt", filename):
-                if 'kate' in filename: 
-                    interesting_term = 'kate'
+                if interesting_term in filename and "Atlanta" not in filename: 
+                    pass
                 else:
                     continue
                 print (interesting_term, filename)
