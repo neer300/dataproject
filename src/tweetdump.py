@@ -42,7 +42,7 @@ for i in range(len(cities)):
     for p in range(1,8):
         for result in  api.search(q=terms,geocode=g,page=p,lang='en'):
             tweet  = result.text
-            print tweet
-            fout.write(tweet+"\n")
+            print tweet.encode( "utf-8" )
+            fout.write(tweet.encode( "utf-8" )+"\n")
     
     fout.close();
