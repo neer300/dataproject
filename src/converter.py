@@ -32,8 +32,10 @@ def read_tweets(filename):
     with open(filename, "r") as txt:
         place = txt.readline()
         term = txt.readline()
-        for i in range(1, 4):
-            tweet = txt.readline().rstrip()
+#        for i in range(1, 4):
+#            tweet = txt.readline().rstrip()
+        for line in txt:
+            tweet = line.rstrip()
             score = get_sentiment_from_alchemy(tweet)
             if score is not None:
                 if score > 0:
