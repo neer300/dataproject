@@ -22,7 +22,7 @@ cities_name = ["New York, NY, USA","Seattle, WA, USA", "San Francisco, CA, USA",
 cities = [(40.7143528, -74.0059731), (47.6062095, -122.3320708), (37.7749295, -122.4194155), (30.267153, -97.7430608), (34.0522342, -118.2436849), (43.0730517, -89.4012302), (41.8781136, -87.6297982), (25.7889689, -80.2264393), (33.7489954, -84.3879824), (42.331427, -83.0457538)]
 
 
-terms = 'obama health'
+terms = 'pope twitter'
 for i in range(len(cities)):
     fout = open("../resources/tweets_"+terms+"_"+cities_name[i]+".txt",'w')
     fout.write(cities_name[i]+"\n")
@@ -34,7 +34,7 @@ for i in range(len(cities)):
     for p in range(1,8):
         for result in  api.search(q=terms,geocode=g,page=p):
             tweet  = result.text
-            print tweet
-            fout.write(tweet+"\n")
+            print tweet.encode( "utf-8" )
+            fout.write(tweet.encode( "utf-8" )+"\n")
     
     fout.close();
