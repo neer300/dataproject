@@ -1,1 +1,0 @@
-{"geocode": [40.7143528, -74.0059731], "terms": "rita rob", "scores": []}

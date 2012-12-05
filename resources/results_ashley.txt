@@ -1,5 +1,0 @@
-{"geocode": [40.7143528, -74.0059731], "terms": "ashley senator", "scores": []}
-{"geocode": [47.6062095, -122.3320708], "terms": "ashley senator", "scores": ["0.104083", "0.104083", "0.057832", "0.0756885"]}
-{"geocode": [37.7749295, -122.4194155], "terms": "ashley senator", "scores": []}
-{"geocode": [30.267153, -97.7430608], "terms": "ashley senator", "scores": []}
-{"geocode": [34.0522342, -118.2436849], "terms": "ashley senator", "scores": []}
