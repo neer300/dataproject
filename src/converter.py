@@ -9,9 +9,11 @@ import re
 BASE_DIRECTORY = "./"
 alchemyObj = AlchemyAPI.AlchemyAPI()
 # Load the API key from disk.
-alchemyObj.loadAPIKey("./resources/api_key.txt");
+keys=[]
+error=0
+currentKey=0
 
-MAXIMUM_REQUEST_TO_ALCHEMY = 75
+MAXIMUM_REQUEST_TO_ALCHEMY_PER_FILE = 10 #75
 DATA_PATH = os.path.join(BASE_DIRECTORY, "data");
 API_KEY_PATH = os.path.join(BASE_DIRECTORY, "resources", "api_key.txt")
 CSV_FILE_PATH = os.path.join(BASE_DIRECTORY, "data", "sentiment.csv")
@@ -22,8 +24,9 @@ print DATA_PATH
 
 def read_tweets(filename):
     filename = os.path.join(DATA_PATH, filename)
+    print "=" * 80
     print filename
-    print "="* 80
+    print "-" * 80
     count_positive = 0
     count_neutral = 0
     count_negative = 0
@@ -32,10 +35,8 @@ def read_tweets(filename):
     with open(filename, "r") as txt:
         place = txt.readline()
         term = txt.readline()
-#        for i in range(1, 4):
-#            tweet = txt.readline().rstrip()
-        for line in txt:
-            tweet = line.rstrip()
+        for i in range(1, MAXIMUM_REQUEST_TO_ALCHEMY_PER_FILE):
+            tweet = txt.readline().rstrip()
             score = get_sentiment_from_alchemy(tweet)
             if score is not None:
                 if score > 0:
@@ -80,17 +81,29 @@ def get_sentiment_from_alchemy(tweet):
 #        print str(score) + "\t" + tweet
         return score
     except:
+        global error
+        global currentKey
+        error+=1
         print "error"
+        if(error>2):
+            error=0
+            currentKey+=1
+            fp2=open("temp.txt",'w')
+            fp2.write(keys[currentKey])
+            fp2.close()
+            alchemyObj.loadAPIKey("temp.txt");
         None
 
+    )
+    fp2=open("temp.txt",'w')
+    fp2.write(keys[currentKey])
+    fp2.close()
+    alchemyObj.loadAPIKey("temp.txt");
     
-if __name__== '__main__':
-    print os.getcwd()
 
     with open(CSV_FILE_PATH, "w+") as csvfile:
         csvwriter = csv.writer(csvfile)
         tweets_files = os.listdir(DATA_PATH)
         for filename in tweets_files:
             if re.search("tweets_.*\.txt", filename):
-                read_tweets(filename)
-        
+                read_tweets(filename)  
