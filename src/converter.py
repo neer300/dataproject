@@ -6,7 +6,7 @@ import os
 import re
 
 
-BASE_DIRECTORY = "C:\\Users\\Tushar\\Documents\\GitHub\\dataproject\\"
+BASE_DIRECTORY = "./"
 alchemyObj = AlchemyAPI.AlchemyAPI()
 # Load the API key from disk.
 keys=[]
@@ -106,7 +106,7 @@ def get_sentiment_from_alchemy(tweet):
 if __name__== '__main__':
     print os.getcwd()
     
-    fp=open("C:\\Users\\Tushar\\Documents\\GitHub\\dataproject\\resources\\api_keys.txt",'r')
+    fp=open("/resources/api_keys.txt",'r')
     keys=fp.readlines()
     fp2=open("temp.txt",'w')
     fp2.write(keys[currentKey])
